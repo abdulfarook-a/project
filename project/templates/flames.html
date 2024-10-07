@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAMES Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
+        body {
+            font-family: 'Pirata One', cursive;
+            background-image: url('/static/srcimg/burning-flame-background_53876-90523.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #ffeb3b; /* Yellowish flame color */
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 48px;
+            text-shadow: 3px 3px 10px rgba(255, 0, 0, 0.7); /* Fire-like shadow */
+            color: #ffeb3b;
+        }
+
+        form {
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.7); /* Transparent dark background for readability */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+        }
+
+        input[type="text"] {
+            padding: 15px;
+            margin: 15px;
+            width: 90%;
+            font-size: 18px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        input[type="submit"] {
+            padding: 12px 25px;
+            font-size: 18px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e64a19;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.7); /* Text glow for a fire-like effect */
+            color: #ffeb3b;
+        }
+
+        .result img {
+            width: 150px;
+            height: 150px;
+            margin-top: 20px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>FLAMES Calculator</h1>
+    <form action="/calculate_flames" method="POST">
+        <input type="text" name="name1" placeholder="Enter first name" required><br>
+        <input type="text" name="name2" placeholder="Enter second name" required><br>
+        <input type="submit" value="Calculate FLAMES">
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h2>Result: {{ result }} - {{ meaning }}</h2>
+        {% if result == 'Friends' %}
+            <img src="https://path-to-your-friends-image.jpg" alt="Friends">
+        {% elif result == 'Love' %}
+            <img src="https://path-to-your-love-image.jpg" alt="Love">
+        {% elif result == 'Affection' %}
+            <img src="https://path-to-your-affection-image.jpg" alt="Affection">
+        {% elif result == 'Marriage' %}
+            <img src="https://path-to-your-marriage-image.jpg" alt="Marriage">
+        {% elif result == 'Enemy' %}
+            <img src="https://path-to-your-enemy-image.jpg" alt="Enemy">
+        {% elif result == 'Siblings' %}
+            <img src="https://path-to-your-siblings-image.jpg" alt="Siblings">
+        {% endif %}
+    </div>
+    {% endif %}
+</body>
+</html>
